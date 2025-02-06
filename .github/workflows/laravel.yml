@@ -32,4 +32,9 @@ jobs:
         run: cp .env.example .env
 
       - name: Set Key
+        id: generator
         run: php artisan key:generate
+
+      - name: deploy
+        if: steps.generator.outcome == 'sucess'
+        run: ls
