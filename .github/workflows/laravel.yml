@@ -36,5 +36,11 @@ jobs:
         run: php artisan key:generate
 
       - name: deploy
-        if: steps.generator.outcome == 'sucess'
+        if: steps.generator.outcome == 'success'
         run: ls
+        
+      - name: Artifact
+        uses: actions/upload-artifact@v3
+        with: 
+            name: artifacts
+            path: composer.json
